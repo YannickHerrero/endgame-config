@@ -38,6 +38,7 @@ qmk compile -kb endgame -km zmk_port
   - thumb tap-holds overridden to `280`
   - `QUICK_TAP_TERM = 175`
   - `HOLD_ON_OTHER_KEY_PRESS`
+  - `CHORDAL_HOLD` enabled (Achordion-like opposite-hand tap-hold behavior)
 - Combos:
   - `T + Y -> Esc`
   - `Q + W -> Tab`

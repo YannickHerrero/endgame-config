@@ -45,6 +45,13 @@ combo_t key_combos[] = {
     [TMUX_COMBO] = COMBO(tmux_combo, C(KC_A)),
 };
 
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_eg(
+    'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R',
+    'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R',
+    'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R',
+    '*',           '*', '*',  '*', '*',           '*'
+);
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_eg(
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,        HM_U,         HM_I,         HM_O,        HM_P,
