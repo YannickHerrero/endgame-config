@@ -1,0 +1,35 @@
+name: Build Firmware
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build endgame zmk_port keymap with QMK CLI container
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/workspace" \
+            -w /workspace \
+            ghcr.io/qmk/qmk_cli \
+            bash -lc '
+              set -euo pipefail
+              git clone --depth 1 https://github.com/qmk/qmk_firmware.git qmk_firmware
+              rm -rf qmk_firmware/keyboards/endgame
+              cp -r keyboards/endgame qmk_firmware/keyboards/endgame
+              qmk compile -kb endgame -km zmk_port -Q qmk_firmware
+            '
+
+      - name: Upload firmware artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: |
+            qmk_firmware/.build/endgame_zmk_port.*
