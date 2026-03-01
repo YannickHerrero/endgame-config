@@ -5,6 +5,7 @@
 #define QUICK_TAP_TERM 175
 #define PERMISSIVE_HOLD
 #define CHORDAL_HOLD
+#define FLOW_TAP_TERM 140
 
 #define COMBO_TERM 50
 #define COMBO_ONLY_FROM_LAYER 0
