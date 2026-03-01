@@ -1,6 +1,7 @@
 # endgame-config
 
 QMK configuration for The Endgame keyboard, ported from a ZMK Corne/Chocofi setup.
+It is inspired by this ZMK config: https://github.com/YannickHerrero/chocofi-config
 
 ## Goal
 
@@ -23,6 +24,22 @@ then compile:
 ```bash
 qmk compile -kb endgame -km zmk_port
 ```
+
+## Install
+
+After building, flash the firmware to your keyboard:
+
+```bash
+qmk flash -kb endgame -km zmk_port
+```
+
+If your board does not auto-enter bootloader mode, put it in bootloader manually (usually by pressing the reset button or using the keyboard reset key), then run the flash command again.
+
+Quick workflow:
+- Plug in the keyboard over USB
+- Enter bootloader mode
+- Run `qmk flash -kb endgame -km zmk_port`
+- Wait for flashing to finish and for the keyboard to reboot
 
 ## What Was Ported From ZMK
 
