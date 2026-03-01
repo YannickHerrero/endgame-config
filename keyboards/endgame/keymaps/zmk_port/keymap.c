@@ -8,6 +8,14 @@ enum layer_names {
     _UTIL,
 };
 
+enum custom_keycodes {
+    QUOT_SPC = SAFE_RANGE,
+    DQUO_SPC,
+    TILD_SPC,
+    GRV_SPC,
+    CIRC_SPC,
+};
+
 #define HM_A LSFT_T(KC_A)
 #define HM_S LCTL_T(KC_S)
 #define HM_D LALT_T(KC_D)
@@ -21,6 +29,22 @@ enum layer_names {
 #define TH_NAV_SPC LT(_NAV, KC_SPC)
 #define TH_UTIL_F18 LT(_UTIL, KC_F18)
 
+enum combos {
+    ESC_COMBO,
+    TAB_COMBO,
+    TMUX_COMBO,
+};
+
+const uint16_t PROGMEM esc_combo[]  = {KC_T, KC_Y, COMBO_END};
+const uint16_t PROGMEM tab_combo[]  = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM tmux_combo[] = {HM_A, HM_S, COMBO_END};
+
+combo_t key_combos[] = {
+    [ESC_COMBO] = COMBO(esc_combo, KC_ESC),
+    [TAB_COMBO] = COMBO(tab_combo, KC_TAB),
+    [TMUX_COMBO] = COMBO(tmux_combo, C(KC_A)),
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_eg(
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,        HM_U,         HM_I,         HM_O,        HM_P,
@@ -30,16 +54,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_NUM] = LAYOUT_eg(
-        KC_EXLM, KC_GRV,  KC_LCBR, KC_RCBR, A(KC_BSPC),                KC_DQUO,     KC_7,         KC_8,         KC_9,        KC_BSPC,
-        KC_LT,   KC_TILD, KC_LPRN, KC_RPRN, KC_DEL,                    KC_QUOT,     KC_4,         KC_5,         KC_6,        KC_SLSH,
-        KC_GT,   KC_CIRC, KC_LBRC, KC_RBRC, KC_TRNS,                   KC_0,        KC_1,         KC_2,         KC_3,        KC_QUES,
+        KC_EXLM, KC_GRV,  KC_LCBR, KC_RCBR, A(KC_BSPC),                DQUO_SPC,    KC_7,         KC_8,         KC_9,        KC_BSPC,
+        KC_LT,   KC_TILD, KC_LPRN, KC_RPRN, KC_DEL,                    QUOT_SPC,    KC_4,         KC_5,         KC_6,        KC_SLSH,
+        KC_GT,   CIRC_SPC,KC_LBRC, KC_RBRC, KC_TRNS,                   KC_0,        KC_1,         KC_2,         KC_3,        KC_QUES,
         KC_TRNS,          KC_TRNS, KC_TRNS,                            KC_TRNS,     KC_TRNS,                                      MO(_OPT)
     ),
 
     [_NAV] = LAYOUT_eg(
-        KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC,     KC_AMPR,      KC_ASTR,      KC_MINS,     KC_EQL,
-        KC_LT,   KC_TRNS, KC_UNDS, KC_SLSH, KC_PIPE,                   A(KC_1),     A(KC_2),      A(KC_3),      A(KC_4),     KC_GRV,
-        KC_GT,   KC_TRNS, KC_PLUS, KC_QUES, KC_NUBS,                   A(KC_5),     A(KC_6),      KC_PIPE,      KC_NUBS,     KC_TILD,
+        KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   CIRC_SPC,    KC_AMPR,      KC_ASTR,      KC_MINS,     KC_EQL,
+        KC_LT,   KC_TRNS, KC_UNDS, KC_SLSH, KC_PIPE,                   A(KC_1),     A(KC_2),      A(KC_3),      A(KC_4),     GRV_SPC,
+        KC_GT,   KC_TRNS, KC_PLUS, KC_QUES, KC_NUBS,                   A(KC_5),     A(KC_6),      KC_PIPE,      KC_NUBS,     TILD_SPC,
         KC_TRNS,          KC_TRNS, MO(_OPT),                           KC_TRNS,     KC_TRNS,                                      KC_TRNS
     ),
 
@@ -66,5 +90,36 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return 280;
         default:
             return TAPPING_TERM;
+    }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!record->event.pressed) {
+        return true;
+    }
+
+    switch (keycode) {
+        case QUOT_SPC:
+            tap_code(KC_QUOT);
+            tap_code(KC_SPC);
+            return false;
+        case DQUO_SPC:
+            tap_code16(S(KC_QUOT));
+            tap_code(KC_SPC);
+            return false;
+        case TILD_SPC:
+            tap_code16(S(KC_GRV));
+            tap_code(KC_SPC);
+            return false;
+        case GRV_SPC:
+            tap_code(KC_GRV);
+            tap_code(KC_SPC);
+            return false;
+        case CIRC_SPC:
+            tap_code16(S(KC_6));
+            tap_code(KC_SPC);
+            return false;
+        default:
+            return true;
     }
 }
