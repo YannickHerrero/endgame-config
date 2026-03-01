@@ -21,10 +21,18 @@ jobs:
           cp -r keyboards/endgame qmk_firmware/keyboards/endgame
           (cd qmk_firmware && util/docker_build.sh endgame:zmk_port)
 
+      - name: List build outputs
+        run: |
+          ls -la qmk_firmware/.build || true
+          ls -la qmk_firmware/.build/* || true
+
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
           name: firmware
+          if-no-files-found: error
           path: |
-            qmk_firmware/.build/endgame_zmk_port.*
-            qmk_firmware/endgame_zmk_port.*
+            qmk_firmware/.build/**/endgame_zmk_port.*
+            qmk_firmware/.build/**/*.uf2
+            qmk_firmware/.build/**/*.hex
+            qmk_firmware/.build/**/*.bin
