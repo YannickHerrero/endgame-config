@@ -57,3 +57,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,          KC_TRNS, KC_TRNS,                            KC_TRNS,     KC_TRNS,                                      TH_UTIL_F18
     ),
 };
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case TH_GUI_ENT:
+        case TH_NAV_SPC:
+        case TH_UTIL_F18:
+            return 280;
+        default:
+            return TAPPING_TERM;
+    }
+}
