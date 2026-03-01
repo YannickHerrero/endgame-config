@@ -35,9 +35,9 @@ enum combos {
     TMUX_COMBO,
 };
 
-const uint16_t PROGMEM esc_combo[]  = {KC_T, KC_Y, COMBO_END};
-const uint16_t PROGMEM tab_combo[]  = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM tmux_combo[] = {HM_A, HM_S, COMBO_END};
+const uint16_t PROGMEM esc_combo[]  = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM tab_combo[]  = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM tmux_combo[] = {HM_S, HM_D, COMBO_END};
 
 combo_t key_combos[] = {
     [ESC_COMBO] = COMBO(esc_combo, KC_ESC),
