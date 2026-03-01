@@ -13,8 +13,7 @@ Replicate the original ZMK behavior as closely as possible:
 
 ## Source Repositories
 
-- ZMK source layout: `/home/yannick/dev/chocofi-config`
-- Endgame keyboard definition: `/home/yannick/dev/TheEndgame2024/003 FIRMWARE/qmk-config-endgame`
+- ZMK source layout: `https://github.com/YannickHerrero/chocofi-config`
 
 ## Build (inside a QMK checkout)
 
