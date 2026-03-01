@@ -24,7 +24,11 @@ jobs:
               git clone --depth 1 https://github.com/qmk/qmk_firmware.git qmk_firmware
               rm -rf qmk_firmware/keyboards/endgame
               cp -r keyboards/endgame qmk_firmware/keyboards/endgame
-              /opt/qmk/bin/qmk compile -kb endgame -km zmk_port -Q qmk_firmware
+              if command -v qmk >/dev/null 2>&1; then
+                qmk compile -kb endgame -km zmk_port -Q qmk_firmware
+              else
+                python3 -m qmk compile -kb endgame -km zmk_port -Q qmk_firmware
+              fi
             '
 
       - name: Upload firmware artifacts
