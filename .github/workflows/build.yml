@@ -23,6 +23,10 @@ jobs:
 
       - name: List build outputs
         run: |
+          ls -la qmk_firmware || true
+          ls -la qmk_firmware/*.uf2 || true
+          ls -la qmk_firmware/*.hex || true
+          ls -la qmk_firmware/*.bin || true
           ls -la qmk_firmware/.build || true
           ls -la qmk_firmware/.build/* || true
 
@@ -32,6 +36,10 @@ jobs:
           name: firmware
           if-no-files-found: error
           path: |
+            qmk_firmware/endgame_zmk_port.*
+            qmk_firmware/*.uf2
+            qmk_firmware/*.hex
+            qmk_firmware/*.bin
             qmk_firmware/.build/**/endgame_zmk_port.*
             qmk_firmware/.build/**/*.uf2
             qmk_firmware/.build/**/*.hex
