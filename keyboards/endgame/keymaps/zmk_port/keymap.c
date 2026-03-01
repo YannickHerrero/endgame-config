@@ -100,6 +100,22 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case HM_A:
+        case HM_S:
+        case HM_D:
+        case HM_F:
+        case HM_U:
+        case HM_I:
+        case HM_O:
+        case HM_P:
+            return 0;
+        default:
+            return QUICK_TAP_TERM;
+    }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!record->event.pressed) {
         return true;
