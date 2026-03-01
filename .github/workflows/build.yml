@@ -13,23 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build endgame zmk_port keymap with QMK CLI container
+      - name: Build endgame zmk_port keymap with QMK Docker workflow
         run: |
-          docker run --rm \
-            -v "${{ github.workspace }}:/workspace" \
-            -w /workspace \
-            ghcr.io/qmk/qmk_cli \
-            bash -c '
-              set -euo pipefail
-              git clone --depth 1 https://github.com/qmk/qmk_firmware.git qmk_firmware
-              rm -rf qmk_firmware/keyboards/endgame
-              cp -r keyboards/endgame qmk_firmware/keyboards/endgame
-              if command -v qmk >/dev/null 2>&1; then
-                qmk compile -kb endgame -km zmk_port -Q qmk_firmware
-              else
-                python3 -m qmk compile -kb endgame -km zmk_port -Q qmk_firmware
-              fi
-            '
+          set -euo pipefail
+          git clone --depth 1 --recurse-submodules https://github.com/qmk/qmk_firmware.git qmk_firmware
+          rm -rf qmk_firmware/keyboards/endgame
+          cp -r keyboards/endgame qmk_firmware/keyboards/endgame
+          qmk_firmware/util/docker_build.sh endgame:zmk_port
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
@@ -37,3 +27,4 @@ jobs:
           name: firmware
           path: |
             qmk_firmware/.build/endgame_zmk_port.*
+            qmk_firmware/endgame_zmk_port.*
