@@ -19,12 +19,12 @@ jobs:
             -v "${{ github.workspace }}:/workspace" \
             -w /workspace \
             ghcr.io/qmk/qmk_cli \
-            bash -lc '
+            bash -c '
               set -euo pipefail
               git clone --depth 1 https://github.com/qmk/qmk_firmware.git qmk_firmware
               rm -rf qmk_firmware/keyboards/endgame
               cp -r keyboards/endgame qmk_firmware/keyboards/endgame
-              qmk compile -kb endgame -km zmk_port -Q qmk_firmware
+              /opt/qmk/bin/qmk compile -kb endgame -km zmk_port -Q qmk_firmware
             '
 
       - name: Upload firmware artifacts
