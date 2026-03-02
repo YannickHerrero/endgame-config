@@ -25,9 +25,7 @@ enum custom_keycodes {
 #define HM_O LCTL_T(KC_O)
 #define HM_P LSFT_T(KC_P)
 
-#define TH_GUI_ENT LGUI_T(KC_ENT)
 #define TH_NAV_SPC LT(_NAV, KC_SPC)
-#define TH_UTIL_F18 LT(_UTIL, KC_F18)
 
 enum combos {
     ESC_COMBO,
@@ -57,14 +55,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,        HM_U,         HM_I,         HM_O,        HM_P,
         HM_A,    HM_S,    HM_D,    HM_F,    KC_G,                      KC_H,        KC_J,         KC_K,         KC_L,        KC_SCLN,
         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,        KC_M,         KC_COMM,      KC_DOT,      KC_QUOT,
-        KC_TRNS,          KC_SPC,  MO(_NUM),                           TH_GUI_ENT,  KC_SPC,                                       TH_NAV_SPC
+        C(KC_A),          KC_LGUI, MO(_NUM),                           TH_NAV_SPC,  MO(_UTIL),                                    KC_ENT
     ),
 
     [_NUM] = LAYOUT_eg(
         KC_EXLM, KC_GRV,  KC_LCBR, KC_RCBR, A(KC_BSPC),                DQUO_SPC,    KC_7,         KC_8,         KC_9,        KC_BSPC,
         KC_LT,   KC_TILD, KC_LPRN, KC_RPRN, KC_DEL,                    QUOT_SPC,    KC_4,         KC_5,         KC_6,        KC_SLSH,
         KC_GT,   CIRC_SPC,KC_LBRC, KC_RBRC, KC_TRNS,                   KC_0,        KC_1,         KC_2,         KC_3,        KC_QUES,
-        KC_TRNS,          KC_TRNS, KC_TRNS,                            KC_TRNS,     KC_TRNS,                                      MO(_OPT)
+        KC_TRNS,          KC_TRNS, KC_TRNS,                            MO(_OPT),    KC_TRNS,                                      KC_TRNS
     ),
 
     [_NAV] = LAYOUT_eg(
@@ -85,15 +83,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_LEFT,     KC_RGHT,      KC_TRNS,      KC_TRNS,     KC_TRNS,
         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,                    G(S(KC_4)),  KC_MPLY,      KC_VOLU,      KC_BRIU,     KC_TRNS,
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                     G(S(KC_5)),  KC_MUTE,      KC_VOLD,      KC_BRID,     KC_CAPS,
-        KC_TRNS,          KC_TRNS, KC_TRNS,                            KC_TRNS,     KC_TRNS,                                      TH_UTIL_F18
+        KC_TRNS,          KC_TRNS, KC_TRNS,                            KC_TRNS,     KC_TRNS,                                      KC_TRNS
     ),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case TH_GUI_ENT:
         case TH_NAV_SPC:
-        case TH_UTIL_F18:
             return 280;
         default:
             return TAPPING_TERM;
