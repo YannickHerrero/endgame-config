@@ -14,10 +14,6 @@
         "cols": ["GP27", "GP29", "GP28", "GP26", "GP15", "GP4", "GP3", "GP0", "GP1", "GP2"],
         "rows": ["GP14", "GP13", "GP12", "GP11"]
     },
-    "ws2812": {
-        "driver": "vendor",
-        "pin": "GP16"
-    },
     "features": {
         "audio": true,
         "backlight": false,
@@ -31,7 +27,7 @@
         "magic": true,
         "music": false,
         "oled": false,
-        "rgb_matrix": true,
+        "rgb_matrix": false,
         "rgblight": false
     },
     "caps_word": {
@@ -78,20 +74,6 @@
                 {"label": "K36", "matrix": [3, 6], "x": 34, "y": 0},
                 {"label": "K39", "matrix": [3, 9], "x": 35, "y": 0}
             ]
-        }
-    },
-    "rgb_matrix": {
-        "driver": "ws2812",
-        "led_count": 1,
-        "layout": [
-            {"flags": 4, "matrix": [0, 0], "x": 0, "y": 0}
-        ],
-        "animations": {
-            "solid_color": true,
-            "breathing": true,
-            "cycle_all": true,
-            "pixel_rain": true,
-            "typing_heatmap": true
         }
     }
 }
