@@ -68,8 +68,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT_eg(
         KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   CIRC_SPC,    KC_AMPR,      KC_ASTR,      KC_MINS,     KC_EQL,
-        KC_LT,   KC_TRNS, KC_UNDS, KC_SLSH, KC_PIPE,                   A(KC_1),     A(KC_2),      A(KC_3),      A(KC_4),     GRV_SPC,
-        KC_GT,   KC_TRNS, KC_PLUS, KC_QUES, KC_NUBS,                   A(KC_5),     A(KC_6),      KC_PIPE,      KC_NUBS,     TILD_SPC,
+        KC_LT,   KC_TRNS, KC_UNDS, KC_SLSH, KC_PIPE,                   C(KC_1),     C(KC_2),      C(KC_3),      C(KC_4),     GRV_SPC,
+        KC_GT,   KC_TRNS, KC_PLUS, KC_QUES, KC_NUBS,                   C(KC_5),     C(KC_6),      KC_PIPE,      KC_NUBS,     TILD_SPC,
         KC_TRNS,          KC_TRNS, MO(_OPT),                           KC_TRNS,     KC_TRNS,                                      KC_TRNS
     ),
 
