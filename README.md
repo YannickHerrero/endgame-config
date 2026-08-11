@@ -42,13 +42,16 @@ Quick workflow:
 
 ## What Was Ported From ZMK
 
-- Layers: `base`, `num`, `nav`, `opt`, `util`
+- Original layers: `base`, `num`, `nav`, `opt`, `util`
+- An additional `mouse` layer for pointer movement, scrolling, and mouse buttons
 - Home-row mods on `A/S/D/F` and `U/I/O/P`
-- Thumb behavior equivalents:
-  - `MO(1)` for number layer access
-  - `LGUI_T(KC_ENT)` for GUI-hold / Enter-tap
+- Thumb behavior:
+  - Dedicated `Ctrl+A`
+  - `MO(_MOUSE)` for mouse layer access
+  - `MO(_NUM)` for number layer access
   - `LT(_NAV, KC_SPC)` for Nav-hold / Space-tap
-  - `LT(_UTIL, KC_F18)` for Util-hold / F18-tap
+  - `MO(_UTIL)` for utility layer access
+  - Dedicated Enter
 - Timing intent:
   - `TAPPING_TERM = 200`
   - thumb tap-holds overridden to `280`
@@ -77,7 +80,7 @@ Quick workflow:
 ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤
 │   Z   │   X   │   C   │   V   │   B   │   │   N   │   M   │   ,   │   .   │   '   │
 ╰───────┴───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┴───────╯
-                │ Ctl-A │  GUI  │  NUM  │   │ NAV/Sp│  UTIL │ Enter │
+                │ Ctl-A │ MOUSE │  NUM  │   │ NAV/Sp│  UTIL │ Enter │
                 ╰───────┴───────┴───────╯   ╰───────┴───────┴───────╯
 ```
 
@@ -116,6 +119,20 @@ Quick workflow:
 │   .   │   .   │   .   │   .   │   .   │   │   .   │   .   │   .   │   _   │   +   │
 ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤
 │   .   │   .   │ GUI-V │ GUI-C │ GUI-X │   │  Left │  Down │   Up  │ Right │   .   │
+├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤
+│   .   │   .   │   .   │   .   │   .   │   │   .   │   .   │   .   │   .   │   .   │
+╰───────┴───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┴───────╯
+                │   .   │   .   │   .   │   │   .   │   .   │   .   │
+                ╰───────┴───────┴───────╯   ╰───────┴───────┴───────╯
+```
+
+### Mouse (`MOUSE`)
+
+```text
+╭───────┬───────┬───────┬───────┬───────╮   ╭───────┬───────┬───────┬───────┬───────╮
+│ Speed1│ Speed2│ Speed3│   .   │   .   │   │   .   │ WhlUp │ WhlDn │ WhlLt │ WhlRt │
+├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤
+│ Back  │Forward│ Right │ Left  │Middle │   │ MsLeft│ MsDown│  MsUp │MsRight│   .   │
 ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤
 │   .   │   .   │   .   │   .   │   .   │   │   .   │   .   │   .   │   .   │   .   │
 ╰───────┴───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┴───────╯

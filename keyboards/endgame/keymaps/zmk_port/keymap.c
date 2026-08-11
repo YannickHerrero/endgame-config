@@ -6,6 +6,7 @@ enum layer_names {
     _NAV,
     _OPT,
     _UTIL,
+    _MOUSE,
 };
 
 enum custom_keycodes {
@@ -55,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,        HM_U,         HM_I,         HM_O,        HM_P,
         HM_A,    HM_S,    HM_D,    HM_F,    KC_G,                      KC_H,        KC_J,         KC_K,         KC_L,        KC_SCLN,
         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,        KC_M,         KC_COMM,      KC_DOT,      KC_QUOT,
-        C(KC_A),          KC_LGUI, MO(_NUM),                           TH_NAV_SPC,  MO(_UTIL),                                    KC_ENT
+        C(KC_A),          MO(_MOUSE), MO(_NUM),                        TH_NAV_SPC,  MO(_UTIL),                                    KC_ENT
     ),
 
     [_NUM] = LAYOUT_eg(
@@ -83,6 +84,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_LEFT,     KC_RGHT,      KC_TRNS,      KC_TRNS,     KC_TRNS,
         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,                    G(S(KC_4)),  KC_MPLY,      KC_VOLU,      KC_BRIU,     KC_TRNS,
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                     G(S(KC_5)),  KC_MUTE,      KC_VOLD,      KC_BRID,     KC_CAPS,
+        KC_TRNS,          KC_TRNS, KC_TRNS,                            KC_TRNS,     KC_TRNS,                                      KC_TRNS
+    ),
+
+    [_MOUSE] = LAYOUT_eg(
+        KC_ACL0, KC_ACL1, KC_ACL2, KC_TRNS, KC_TRNS,                   KC_TRNS,     KC_WH_U,      KC_WH_D,      KC_WH_L,     KC_WH_R,
+        KC_BTN4, KC_BTN5, KC_BTN2, KC_BTN1, KC_BTN3,                   KC_MS_L,     KC_MS_D,      KC_MS_U,      KC_MS_R,     KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS,     KC_TRNS,      KC_TRNS,      KC_TRNS,     KC_TRNS,
         KC_TRNS,          KC_TRNS, KC_TRNS,                            KC_TRNS,     KC_TRNS,                                      KC_TRNS
     ),
 };
