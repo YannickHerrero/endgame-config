@@ -88,8 +88,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MOUSE] = LAYOUT_eg(
-        KC_ACL0, KC_ACL1, KC_ACL2, KC_TRNS, KC_TRNS,                   KC_TRNS,     KC_WH_U,      KC_WH_D,      KC_WH_L,     KC_WH_R,
-        KC_BTN4, KC_BTN5, KC_BTN2, KC_BTN1, KC_BTN3,                   KC_MS_L,     KC_MS_D,      KC_MS_U,      KC_MS_R,     KC_TRNS,
+        MS_ACL0, MS_ACL1, MS_ACL2, KC_TRNS, KC_TRNS,                   KC_TRNS,     MS_WHLU,      MS_WHLD,      MS_WHLL,     MS_WHLR,
+        MS_BTN4, MS_BTN5, MS_BTN2, MS_BTN1, MS_BTN3,                   MS_LEFT,     MS_DOWN,      MS_UP,        MS_RGHT,     KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS,     KC_TRNS,      KC_TRNS,      KC_TRNS,     KC_TRNS,
         KC_TRNS,          KC_TRNS, KC_TRNS,                            KC_TRNS,     KC_TRNS,                                      KC_TRNS
     ),
