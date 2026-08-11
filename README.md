@@ -61,6 +61,57 @@ Quick workflow:
   - `A + S -> Ctrl+A` (tmux leader)
 - Dead-key helper outputs (macro style): quote, double-quote, tilde, backtick, caret (all followed by space)
 
+## Layer Maps
+
+`.` is transparent and uses the key from the next active lower layer. `X` is disabled.
+`key/mod` means tap for the key and hold for the modifier or layer. Labels ending in
+`+Sp` type the indicated dead-key character followed by a space.
+
+### Base
+
+```text
+ Q       W       E       R       T               Y       U/GUI   I/Alt   O/Ctl   P/Sft
+ A/Sft   S/Ctl   D/Alt   F/GUI   G               H       J       K       L       ;
+ Z       X       C       V       B               N       M       ,       .       '
+                 Ctl-A   GUI     NUM             NAV/Sp  UTIL    Enter
+```
+
+### Number (`NUM`)
+
+```text
+ !       `       {       }       Alt-Bsp         "+Sp    7       8       9       Bsp
+ <       ~       (       )       Del             '+Sp    4       5       6       /
+ >       ^+Sp    [       ]       .               0       1       2       3       ?
+                 .       .       .               OPT     .       .
+```
+
+### Navigation and symbols (`NAV`)
+
+```text
+ !       @       #       $       %               ^+Sp    &       *       -       =
+ <       .       _       /       PIPE            Alt-1   Alt-2   Alt-3   Alt-4   `+Sp
+ >       .       +       ?       NUBS            Alt-5   Alt-6   PIPE    NUBS    ~+Sp
+                 .       .       OPT             .       .       .
+```
+
+### Options (`OPT`)
+
+```text
+ .       .       .       .       .               .       .       .       _       +
+ .       .       GUI-V   GUI-C   GUI-X           Left    Down    Up      Right   .
+ .       .       .       .       .               .       .       .       .       .
+                 .       .       .               .       .       .
+```
+
+### Utilities (`UTIL`)
+
+```text
+ F1      F2      F3      F4      F5              Left    Right   .       .       .
+ F6      F7      F8      F9      F10             GUI-S-4 Play    Vol+    Bri+    .
+ X       X       X       X       X               GUI-S-5 Mute    Vol-    Bri-    Caps
+                 .       .       .               .       .       .
+```
+
 ## Intentional Differences
 
 - ZMK Bluetooth actions were omitted as requested.
